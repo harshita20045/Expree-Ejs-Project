@@ -1,0 +1,41 @@
+<!-- views/bookTickets.ejs -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Confirm Tickets</title>
+  <%- include("__bootstrap.ejs") %>
+</head>
+<body>
+  <div class="container mt-5">
+    <h2 class="text-center mb-4">Book Tickets for <%= event.name %></h2>
+    
+    <div class="card mx-auto" style="max-width: 500px;">
+      <div class="card-body">
+       <form action="/rsvp/<%= event.id %>/bookticket" method="POST">
+          <input type="hidden" name="username" value="<%= username %>" />
+          <input type="hidden" name="email" value="<%= email %>" />
+          <input type="hidden" name="tickets" value="<%= tickets %>" />
+
+          <div class="mb-3">
+            <label for="eventName" class="form-label">Event</label>
+            <input type="text" class="form-control" id="eventName" value="<%= event.name %>" readonly>
+          </div>
+
+          <div class="mb-3">
+            <label for="tickets" class="form-label">Number of Tickets</label>
+            <input type="number" class="form-control" value="<%= tickets %>" readonly>
+          </div>
+
+          <button type="submit" class="btn btn-success w-100">Confirm Booking</button>
+        </form>
+      </div>
+    </div>
+
+    <div class="text-center mt-3">
+      <a href="/" class="btn btn-outline-secondary">Back to Home</a>
+    </div>
+  </div>
+</body>
+</html>

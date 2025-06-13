@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title><%= title %></title>
+  <%- include("__bootstrap.ejs") %>
+  <style>
+    .event-card {
+      transition: transform 0.2s;
+    }
+    .event-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+    .event-image {
+      max-height: 200px;
+      object-fit: cover;
+    }
+  </style>
+</head>
+<body>
+  <%- include("__header.ejs") %>
+  <div class="container mt-5 pt-4">
+
+    <% if (events && events.length > 0) { %>
+      <div class="row">
+        <% events.forEach(event => { %>
+          <div class="col-md-4 mb-4">
+            <div class="card event-card">
+              
+                <img src="<%= event.image %>" class="card-img-top event-image" alt="<%= event.name %>">
+           
+                
+             
+              <div class="card-body">
+                <h5 class="card-title"><%= event.name %></h5>
+                <p class="card-text"><strong>Date:</strong> <%= new Date(event.date).toLocaleString() %></p>
+                <p class="card-text"><strong>Location:</strong> <%= event.location %></p>
+                <p class="card-text"><%= event.description || "No description available." %></p>
+               <a href="/events/<%= event.id %>/book" class="btn btn-primary">View More</a>
+
+              </div>
+            </div>
+          </div>
+        <% }); %>
+      </div>
+    <% } else { %>
+      <div class="alert alert-info text-center" role="alert">
+        No events found.
+      </div>
+    <% } %>
+  </div>
+   <%- include("__footer.ejs") %>
+</body>
+</html>

@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Create New Event</title>
+  <%- include("__bootstrap.ejs") %>
+  <style>
+   
+    .form-box {
+      background-color: #a0abb7;
+      padding: 20px;
+      border-radius: 8px;
+      box-shadow: 0 2px 4px rgba(180, 154, 154, 0.1);
+      margin-bottom: 20px;
+    }
+  </style>
+</head>
+<body>
+  
+
+  <div class="container mt-5">
+    <h1 class="text-center mb-4">Create a New Event</h1>
+
+    <div class="form-box">
+      <form action="/events/create" method="POST">
+        <div class="mb-3">
+          <label for="name" class="form-label">Event Name</label>
+          <input type="text" class="form-control" id="name" name="name" placeholder="Enter event name" required>
+        </div>
+
+        <div class="mb-3">
+          <label for="date" class="form-label">Date and Time</label>
+          <input type="datetime-local" class="form-control" id="date" name="date" required>
+        </div>
+
+        <div class="mb-3">
+          <label for="location" class="form-label">Location</label>
+          <input type="text" class="form-control" id="location" name="location" placeholder="Enter location" required>
+        </div>
+
+        <div class="mb-3">
+          <label for="description" class="form-label">Description</label>
+          <textarea class="form-control" id="description" name="description" rows="4" placeholder="Tell us about the event" required></textarea>
+        </div>
+
+        <div class="mb-3">
+          <label for="category" class="form-label">Category</label>
+          <select class="form-select" id="category" name="category" required>
+            <option value="" disabled selected>Choose a category</option>
+            <option value="Festival">Festival</option>
+            <option value="Workshop">Workshop</option>
+            <option value="Conference">Conference</option>
+            <option value="Concert">Concert</option>
+            <option value="Exhibition">Exhibition</option>
+            <option value="Retreat">Retreat</option>
+            <option value="Screening">Screening</option>
+            <option value="Sports">Sports</option>
+            <option value="Meetup">Meetup</option>
+            <option value="Theatre">Theatre</option>
+            <option value="Tournament">Tournament</option>
+            <option value="Camp">Camp</option>
+            <option value="Adventure">Adventure</option>
+            <option value="Fair">Fair</option>
+            <option value="Reading">Reading</option>
+            <option value="Show">Show</option>
+          </select>
+        </div>
+
+        <div class="mb-3">
+          <label for="image" class="form-label">Image URL (Optional)</label>
+          <input type="url" class="form-control" id="image" name="image" placeholder="Paste image URL (e.g., https://example.com/image.jpg)">
+        </div> 
+       <div class="mb-3">
+  <label for="tickets" class="form-label">No. of Tickets</label>
+  <input type="number" class="form-control" id="tickets" name="tickets" placeholder="Enter number of tickets available" min="1" required>
+</div>
+
+
+        <button type="submit" class="btn btn-primary">Create Event</button>
+        <a href="/" class="btn btn-secondary ms-2">Cancel</a>
+      </form>
+    </div>
+  </div>
+
+  
+</body>
+</html>

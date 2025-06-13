@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Error</title>
+  <%- include("__bootstrap.ejs") %>
+</head>
+<body>
+  
+  <div class="container mt-5">
+    <div class="alert alert-danger text-center" role="alert">
+      <h4 class="alert-heading">Error</h4>
+      <p><%= message %></p>
+      <a href="/" class="btn btn-primary">Back to Home</a>
+    </div>
+  </div>
+</body>
+</html>

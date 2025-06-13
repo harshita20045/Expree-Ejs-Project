@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>About Page</title>
+  <%- include("__bootstrap.ejs") %>
+  <style>
+    .about-section {
+      background-color: #f8f9fa;
+      padding: 25px;
+      border-radius: 8px;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+      margin-top: 20px;
+    }
+  </style>
+</head>
+<body>
+  <%- include("__header.ejs") %>
+
+  <div class="container mt-5">
+    <h1 class="text-center mb-4">About Us</h1>
+
+    <div class="about-section">
+      <h4>Our Story</h4>
+      <p>
+        The Event Management System was created to simplify the process of organizing and attending events. We aim to provide a user-friendly platform where anyone can create events, manage RSVPs, and connect with others.
+      </p>
+
+      <h4>Our Purpose</h4>
+      <p>
+        Whether it’s a festival, conference, or a small gathering, our goal is to make event planning effortless and enjoyable for everyone involved.
+      </p>
+    </div>
+
+    <div class="text-center mt-4">
+      <a href="/" class="btn btn-outline-secondary">Back to Home</a>
+    </div>
+  </div>
+
+</body>
+</html>

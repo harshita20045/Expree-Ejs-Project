@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Book Event - <%= event.name %></title>
+  <%- include("__bootstrap.ejs") %>
+</head>
+<body>
+  <%- include("__header.ejs") %>
+
+  <div class="container my-5">
+    <h1 class="text-center mb-4 text-primary">Book Your Spot: <%= event.name %></h1>
+
+    <div class="row g-4">
+      <!-- Left Column: Event Info -->
+      <div class="col-md-6">
+        <div class="card shadow">
+          <% if (event.image) { %>
+            <img src="<%= event.image %>" class="card-img-top" alt="Event Image" style="max-height: 300px; object-fit: cover;">
+          <% } else { %>
+            <div class="bg-light d-flex align-items-center justify-content-center" style="height: 300px;">
+              <span class="text-muted">No image available</span>
+            </div>
+          <% } %>
+
+          <div class="card-body">
+            <h4 class="card-title text-center"><%= event.name %></h4>
+
+            <table class="table table-bordered mt-3">
+              <tbody>
+                <tr>
+                  <th>Date</th>
+                  <td><%= new Date(event.date).toLocaleString() %></td>
+                </tr>
+                <tr>
+                  <th>Location</th>
+                  <td><%= event.location %></td>
+                </tr>
+                <tr>
+                  <th>Category</th>
+                  <td><%= event.category || "General" %></td>
+                </tr>
+                <tr>
+                  <th>Description</th>
+                  <td><%= event.description || "No description available." %></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+
+      <!-- Right Column: Booking Form -->
+      <div class="col-md-6">
+        <div class="card p-4 shadow-sm">
+          <h4 class="mb-3">Reserve Your Tickets</h4>
+          <form action="/rsvp/<%= event.id %>/confirm" method="POST">
+            <div class="form-floating mb-3">
+              <input type="text" class="form-control" id="username" name="username" placeholder="Your Name" required>
+              <label for="username">Your Name</label>
+            </div>
+
+            <div class="form-floating mb-3">
+              <input type="email" class="form-control" id="email" name="email" placeholder="name@example.com" required>
+              <label for="email">Email address</label>
+            </div>
+
+            <div class="form-floating mb-4">
+              <input type="number" class="form-control" id="tickets" name="tickets" placeholder="1" min="1" required>
+              <label for="tickets">Number of Tickets</label>
+            </div>
+
+            <button type="submit" class="btn btn-success w-100">Book Now</button>
+          </form>
+        </div>
+      </div>
+    </div>
+
+    <div class="text-center mt-5">
+      <a href="/" class="btn btn-outline-primary">← Back to Home</a>
+    </div>
+  </div>
+</body>
+</html>

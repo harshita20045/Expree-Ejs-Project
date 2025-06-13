@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>My Express App | Contact Us</title>
+  <%- include("__bootstrap.ejs") %>
+  <style>
+    .contact-section {
+      background-color: #f8f9fa;
+      padding: 2rem;
+      border-radius: 8px;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    }
+    .contact-info {
+      margin-top: 2rem;
+    }
+    .contact-info p {
+      margin-bottom: 0.5rem;
+    }
+  </style>
+</head>
+<body>
+  <%- include("__header.ejs") %>
+  <div class="container mt-5">
+    <h1 class="text-center mb-4">Contact Us</h1>
+
+    <!-- Contact Form Section -->
+    <div class="contact-section mb-4">
+      <h2 class="mb-3">Get in Touch</h2>
+      <form action="/contact" method="POST">
+        <div class="mb-3">
+          <label for="name" class="form-label">Name</label>
+          <input type="text" class="form-control" id="name" name="name" placeholder="Your Name" required>
+        </div>
+        <div class="mb-3">
+          <label for="email" class="form-label">Email</label>
+          <input type="email" class="form-control" id="email" name="email" placeholder="Your Email" required>
+        </div>
+        <div class="mb-3">
+          <label for="message" class="form-label">Message</label>
+          <textarea class="form-control" id="message" name="message" rows="5" placeholder="Your Message" required></textarea>
+        </div>
+        <button type="submit" class="btn btn-primary">Send Message</button>
+      </form>
+    </div>
+
+    <!-- Contact Information Section -->
+    <div class="contact-section contact-info">
+      <h2 class="mb-3">Contact Information</h2>
+      <p><strong>Email:</strong> contact@eventmanagement.com</p>
+      <p><strong>Phone:</strong> +91 123-456-7890</p>
+      <p><strong>Address:</strong> 123 Event Street, Mumbai, Maharashtra, India</p>
+      <p>We’re here to help! Reach out to us with any questions or feedback.</p>
+    </div>
+  </div>
+</body>
+</html>
