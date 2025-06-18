@@ -65,6 +65,7 @@ console.log(profile);
       currentUser:req.session.currentUser,
       isLoggedIn:req.session.currentUser.isLoggedIn,
     });
+    
   } catch (error) {
     console.error('Dashboard load error:', error);
     res.status(500).send('Server Error');

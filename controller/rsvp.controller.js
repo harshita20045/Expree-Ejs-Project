@@ -38,7 +38,7 @@ export const ConfirmBooking = async (req, res) => {
       return res.status(400).send("Invalid number of tickets.");
     }
 
-    const users = await User.hasEmail(email); // ✅ Await the Promise
+    const users = await User.hasEmail(email); 
 
     const createAndRegister = async (userId) => {
       const alreadyRegistered = await new Promise((resolve, reject) => {

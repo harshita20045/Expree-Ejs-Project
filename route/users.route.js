@@ -15,7 +15,6 @@ const router = express.Router();
 
 router.post("/signin", signInPage);
 router.post("/signup", signUpPage);
-
 router.get("/logout", logout);
 router.get("/dashboard",dashboard);
 

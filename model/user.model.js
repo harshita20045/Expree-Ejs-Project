@@ -51,27 +51,35 @@ class User {
     });
   }
 
-  static async getUploadedEvents(userId) {
-    const query = `
-     SELECT e.id AS event_id, e.name AS event_name, e.total_tickets, e.tickets_left,
-           r.user_id, u.username, r.tickets
+ static async getUploadedEvents(userId) {
+  const query = `
+    SELECT 
+      e.id AS event_id, 
+      e.name AS event_name, 
+      e.total_tickets, 
+      e.tickets_left,
+      e.date,
+      e.location,
+      e.category,
+      e.image,
+      e.description,
+      e.created_at
     FROM events e
-    LEFT JOIN registrations r ON e.id = r.event_id
-    LEFT JOIN users u ON r.user_id = u.id
     WHERE e.created_by = ?
     ORDER BY e.id;
-    `;
-    return new Promise((resolve, reject) => {
-      pool.getConnection((err, con) => {
-        if (!err) {
-          con.query(query, [userId], (err, results) => {
-            con.release();
-            err ? reject(err) : resolve(results);
-          });
-        } else reject(err);
-      });
+  `;
+  return new Promise((resolve, reject) => {
+    pool.getConnection((err, con) => {
+      if (!err) {
+        con.query(query, [userId], (err, results) => {
+          con.release();
+          err ? reject(err) : resolve(results);
+        });
+      } else reject(err);
     });
-  }
+  });
+}
+
 
   static async getRegisteredEvents(userId) {
     const query = `
